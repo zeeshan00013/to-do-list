@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const authRoutes = require("./routes/authRoutes"); 
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 app.use(express.json());
@@ -33,6 +33,9 @@ app.get("/", (req, res) => {
 });
 app.get("/", (req, res) => {
   res.status(200).send("Server is running");
+});
+app.get("/", (req, res) => {
+  res.send("= backend is running correctly!");
 });
 const todoRoutes = require("./routes/todoRoutes");
 app.use("/api/todos", todoRoutes);
