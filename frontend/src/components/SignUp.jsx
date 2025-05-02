@@ -35,7 +35,7 @@ function SignUp() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/auth/signup",
+        "https://to-do-list-backend-bice.vercel.app/api/auth/signup",
         { username, email, password }
       );
 

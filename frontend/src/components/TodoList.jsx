@@ -30,9 +30,12 @@ function TodoList() {
   const fetchTodos = async () => {
     setTodosLoading(true);
     try {
-      const response = await axios.get("http://localhost:5001/api/todos", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "https://to-do-list-backend-bice.vercel.app/api/todos",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       dispatch(setTodos(response.data));
     } catch (error) {
       const errorMessage =
@@ -54,7 +57,7 @@ function TodoList() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/todos/add",
+        "https://to-do-list-backend-bice.vercel.app/api/todos/add",
         { title: newTodo },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -72,9 +75,12 @@ function TodoList() {
 
   const handleDeleteTodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/api/todos/delete/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://to-do-list-backend-bice.vercel.app/api/todos/delete/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       dispatch(deleteTodo(id));
       toast.success("Todo deleted successfully!");
     } catch (error) {
@@ -89,7 +95,7 @@ function TodoList() {
   const handleToggleComplete = async (id, completed) => {
     try {
       const response = await axios.put(
-        `http://localhost:5001/api/todos/update/${id}`,
+        `https://to-do-list-backend-bice.vercel.app/api/todos/update/${id}`,
         { completed: !completed },
         { headers: { Authorization: `Bearer ${token}` } }
       );
